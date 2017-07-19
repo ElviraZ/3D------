@@ -5,8 +5,7 @@ public class Manager : MonoBehaviour {
 	
 	public GameObject[] blocks;
 	public Transform cube;
-	public Transform leftWall;
-	public Transform rightWall;
+
 	public int maxBlockSize = 4;
 	public int _fieldWidth = 10;
 	public int _fieldHeight = 16;
@@ -32,13 +31,14 @@ public class Manager : MonoBehaviour {
 	private string[] nextblock;
 	
 	public static Manager manager;
-
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        	manager = this;
+    }
+    // Use this for initialization
+    void Start () {
 	
-		if (manager == null){
-			manager = this;
-		}
+		
 		
 		if (PlayerPrefs.HasKey("Highest")){
 			Highest = PlayerPrefs.GetInt("Highest");
@@ -211,7 +211,7 @@ public class Manager : MonoBehaviour {
 		GUI.Label(new Rect(240, 30, 100, 40),Score.ToString());
 		GUI.Label(new Rect(180, 50, 80, 40),"Highest:");
 		GUI.Label(new Rect(240, 50, 80, 40),Highest.ToString());
-		
+		//ÔÚÆÁÄ»ÉÏ»­³ö
 		for (int y = 0;y < nextSize;y++){
 			for (int x = 0;x < nextSize;x++){
 				if (nextblock[y][x] == '1'){
